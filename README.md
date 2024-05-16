@@ -1,6 +1,8 @@
-# React project run
+# React Project
 
-Localy Run This project :
+## How to Run This Project Locally
 
-- npm i
-- npm run dev
+1. Install the necessary dependencies:
+   ```sh
+   npm i
+
