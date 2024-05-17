@@ -1,17 +1,14 @@
 import { Link } from "react-router-dom";
 
 const Navbar = () => {
-  const Navlinks = (
-    <>
-      <li>
-        <Link to="/dashboard">Dashboad</Link>
-      </li>
-    </>
-  );
   return (
-    <div className="navbar bg-base-100">
+    <div className="navbar bg-[#0a0b24] rounded-lg shadow-2xl">
       <div className="flex-1">
-        <a className="btn btn-ghost text-xl">{Navlinks}</a>
+        <div className="text-xl">
+          <Link to="/">
+            <img className="w-16" src="/src/assets/_Logo.png" alt="" />
+          </Link>
+        </div>
       </div>
       <div className="flex-none gap-2">
         <div className="dropdown dropdown-end">

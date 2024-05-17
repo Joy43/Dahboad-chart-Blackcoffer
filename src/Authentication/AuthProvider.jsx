@@ -1,4 +1,4 @@
-import { createContext, useEffect, useState } from "react";
+import React, { createContext, useEffect, useState } from "react";
 import {
   GoogleAuthProvider,
   createUserWithEmailAndPassword,
@@ -9,10 +9,8 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-
 import PropTypes from "prop-types";
-import useAxiosPublic from "../Hook/useAxiosPublic";
-import app from "./Firebase/firebase.config";
+import app from "../Firebase/firebase.config";
 
 export const AuthContext = createContext(null);
 const auth = getAuth(app);
@@ -22,7 +20,6 @@ const AuthProviders = ({ children }) => {
   const [loading, setLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
 
-  const axiosPublic = useAxiosPublic();
   const createUser = (email, password) => {
     setLoading(true);
     return createUserWithEmailAndPassword(auth, email, password);
@@ -50,35 +47,13 @@ const AuthProviders = ({ children }) => {
     });
   };
 
-  // useEffect(() => {
-  //     const unSubcribe = onAuthStateChanged(auth, (currentUser) => {
-  //       console.log('user in the auth changed', currentUser);
-  //       setUser(currentUser);
-  //       setLoading(false);
-  //     });
-  //     return () => unSubcribe();
-  //   }, []);
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
       setUser(currentUser);
-      if (currentUser) {
-        // get token and store client
-        const userInfo = { email: currentUser.email };
-        axiosPublic.post("/jwt", userInfo).then((res) => {
-          if (res.data.token) {
-            localStorage.setItem("access-token", res.data.token);
-            setLoading(false);
-          }
-        });
-      } else {
-        localStorage.removeItem("access-token");
-        setLoading(false);
-      }
+      setLoading(false);
     });
-    return () => {
-      return unsubscribe();
-    };
-  }, [axiosPublic]);
+    return () => unsubscribe();
+  }, []);
 
   const authInfo = {
     user,
@@ -90,14 +65,13 @@ const AuthProviders = ({ children }) => {
     updateUserProfile,
   };
 
-  // Add prop type validation
-  AuthProviders.propTypes = {
-    children: PropTypes.node.isRequired,
-  };
-
   return (
     <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
   );
+};
+
+AuthProviders.propTypes = {
+  children: PropTypes.node.isRequired,
 };
 
 export default AuthProviders;

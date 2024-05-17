@@ -1,5 +1,9 @@
 const Home = () => {
-  return <div></div>;
+  return (
+    <div>
+      <img src="/src/assets/images/chart graph nbg.gif" alt="" />
+    </div>
+  );
 };
 
 export default Home;
