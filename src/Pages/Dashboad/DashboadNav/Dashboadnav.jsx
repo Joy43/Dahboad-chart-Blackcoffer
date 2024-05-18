@@ -10,7 +10,7 @@ const Dashboadnav = () => {
   );
   return (
     <div>
-      <div className="navbar bg-base-100">
+      <div className="navbar bg-base-200 shadow-2xl rounded-2xl m-4 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div
@@ -42,7 +42,13 @@ const Dashboadnav = () => {
           </div>
         </div>
         <div className="navbar-center">
-          <a className="btn btn-ghost text-xl">daisyUI</a>
+          <a className="text-xl">
+            <img
+              className="w-16 bg-transparent"
+              src="/src/assets/ch Logo.png"
+              alt=""
+            />
+          </a>
         </div>
         <div className="navbar-end">
           <div className="form-control">
