@@ -1,12 +1,14 @@
+import { useContext, useState } from "react";
 import { Helmet } from "react-helmet-async";
 import { useForm } from "react-hook-form";
-// import signuplogo from "../../../assets/image/signup.jpg";
+
 import { Link, useNavigate } from "react-router-dom";
 import Swal from "sweetalert2";
-import useAxiosPublic from "../../Hook/useAxiosPublic";
-import useAuth from "../../Hook/useAuth";
-import Googlelogin from "../SocialLogin/GoogleLogin";
+import { AuthContext } from "../../../Authentication/AuthProvider";
+import useAxiosPublic from "../../../Hook/useAxiosPublic";
 
+const image_hosting_key = import.meta.env.VITE_IMAGE_HOSTING_KEY;
+const image_hosting_api = `https://api.imgbb.com/1/upload?key=${image_hosting_key}`;
 const SignUp = () => {
   const axiosPublic = useAxiosPublic();
   const {
@@ -15,19 +17,21 @@ const SignUp = () => {
     reset,
     formState: { errors },
   } = useForm();
-  const { createUser, updateUserProfile } = useAuth();
+  const { createUser, updateUserProfile } = useContext(AuthContext);
   const navigate = useNavigate();
+  const [imageURL, setImageURL] = useState("");
 
   const onSubmit = (data) => {
     createUser(data.email, data.password).then((result) => {
       const loggedUser = result.user;
       console.log(loggedUser);
-      updateUserProfile(data.name, data.photoURL)
+      updateUserProfile(data.name, imageURL) // Using imageURL instead of data.photoURL
         .then(() => {
           // create user entry in the database
           const userInfo = {
             name: data.name,
             email: data.email,
+            photoURL: imageURL, // Include imageURL in userInfo
           };
           axiosPublic.post("/users", userInfo).then((res) => {
             if (res.data.insertedId) {
@@ -48,15 +52,28 @@ const SignUp = () => {
     });
   };
 
+  const handleImageUpload = (event) => {
+    const formData = new FormData();
+    formData.append("image", event.target.files[0]);
+
+    fetch(image_hosting_api, {
+      method: "POST",
+      body: formData,
+    })
+      .then((response) => response.json())
+      .then((data) => setImageURL(data.data.url))
+      .catch((error) => console.error("Error uploading image:", error));
+  };
+
   return (
     <>
       <Helmet>
-        <title> Sign Up</title>
+        <title>Bistro Boss | Sign Up</title>
       </Helmet>
       <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col rounded-xl lg:flex-row-reverse">
+        <div className="hero-content flex-col lg:flex-row-reverse">
           <div className="text-center lg:text-left">
-            <img src="signup" alt="" />
+            {/* <img src={signup} alt="" /> */}
           </div>
           <div className="card flex-shrink-0 w-full max-w-sm shadow-2xl bg-base-100">
             <form onSubmit={handleSubmit(onSubmit)} className="card-body">
@@ -77,14 +94,12 @@ const SignUp = () => {
               </div>
               <div className="form-control">
                 <label className="label">
-                  <span className="label-text">Photo URL</span>
+                  <input
+                    type="file"
+                    onChange={handleImageUpload}
+                    className="file-input file-input-bordered file-input-info w-full max-w-xs"
+                  />
                 </label>
-                <input
-                  type="text"
-                  {...register("photoURL", { required: true })}
-                  placeholder="Photo URL"
-                  className="input input-bordered"
-                />
                 {errors.photoURL && (
                   <span className="text-red-600">Photo URL is required</span>
                 )}
@@ -151,14 +166,16 @@ const SignUp = () => {
               </div>
             </form>
             <p className="px-6">
-              <strong className="text-lg ">
-                Already have an account{" "}
-                <Link className="text-blue-500" to="/login">
-                  Login
-                </Link>
+              <strong>
+                Already Have an account?{" "}
+                <Link to="/login">
+                  <span className="text-lg text-amber-400 ">Login now</span>
+                </Link>{" "}
               </strong>
             </p>
-            <Googlelogin></Googlelogin>
+            <div className="justify-center text-center">
+              {/* <SocialLogin></SocialLogin> */}
+            </div>
           </div>
         </div>
       </div>

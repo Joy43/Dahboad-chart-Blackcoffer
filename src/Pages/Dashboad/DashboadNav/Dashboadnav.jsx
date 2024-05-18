@@ -10,7 +10,7 @@ const Dashboadnav = () => {
   );
   return (
     <div>
-      <div className="navbar bg-base-200 shadow-2xl rounded-2xl m-4 mx-auto">
+      <div className="navbar bg-base-200 shadow-2xl rounded-2xl m-1 mx-auto">
         <div className="navbar-start">
           <div className="dropdown">
             <div

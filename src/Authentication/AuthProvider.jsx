@@ -9,16 +9,18 @@ import {
   signOut,
   updateProfile,
 } from "firebase/auth";
-import PropTypes from "prop-types";
 import app from "../Firebase/firebase.config";
+import useAxiosPublic from "../Hook/useAxiosPublic";
 
 export const AuthContext = createContext(null);
+
 const auth = getAuth(app);
 
-const AuthProviders = ({ children }) => {
+const AuthProvider = ({ children }) => {
   const [user, setUser] = useState(null);
   const [loading, setLoading] = useState(true);
   const googleProvider = new GoogleAuthProvider();
+  const axiosPublic = useAxiosPublic();
 
   const createUser = (email, password) => {
     setLoading(true);
@@ -37,7 +39,9 @@ const AuthProviders = ({ children }) => {
 
   const logOut = () => {
     setLoading(true);
-    return signOut(auth);
+    return signOut(auth).then(() => {
+      setLoading(false);
+    });
   };
 
   const updateUserProfile = (name, photo) => {
@@ -70,8 +74,4 @@ const AuthProviders = ({ children }) => {
   );
 };
 
-AuthProviders.propTypes = {
-  children: PropTypes.node.isRequired,
-};
-
-export default AuthProviders;
+export default AuthProvider;

@@ -1,9 +1,11 @@
 import { NavLink, Outlet } from "react-router-dom";
+import Dashboadnav from "../DashboadNav/Dashboadnav";
+import Chartsummary from "../Dashboad_Iteams/ChartSummary/Chartsummary";
 
 const Sidebar = () => {
   return (
     <div className="flex ">
-      <div className="grid min-h-screen w-64 bg-blue-400 boder border-zinc-300">
+      <div className="grid min-h-screen w-64 bg-white boder  rounded-xl shadow-2xl">
         <ul className="flex flex-col py-4 space-y-1">
           <li className="hidden mx-auto md:block">
             {/* ----------      Header      ------- */}
@@ -98,6 +100,14 @@ const Sidebar = () => {
       {/* -------dashboad contain--------- */}
       <div className="flex-1 p-8">
         <Outlet></Outlet>
+        <div>
+          <div>
+            <Dashboadnav></Dashboadnav>
+          </div>
+          <div>
+            <Chartsummary></Chartsummary>
+          </div>
+        </div>
       </div>
     </div>
   );

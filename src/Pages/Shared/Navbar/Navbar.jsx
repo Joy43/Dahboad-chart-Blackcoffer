@@ -6,9 +6,9 @@ const Navbar = () => {
       <div className="flex-1">
         <div className="text-xl">
           <Link to="/dashboard">
-            <button className="flex items-center gap-1 bg-blue-500 hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
+            <button className="flex items-center gap-1 bg-[#3025a388] hover:bg-blue-400 text-white font-bold py-2 px-4 border-b-4 border-blue-700 hover:border-blue-500 rounded">
               <div className="bg-gray-100 p-2 rounded-md dark:bg-gray-800">
-                <MdDashboard className="w-6 h-6 text-gray-500 dark:text-gray-400" />
+                <MdDashboard className="w-3 h-3 text-gray-500 dark:text-gray-400" />
               </div>
               <button className=" text-gray-50 hover:bg-gray-900/90 dark:bg-gray-50 dark:text-gray-900 dark:hover:bg-gray-50/90">
                 Dashboard
