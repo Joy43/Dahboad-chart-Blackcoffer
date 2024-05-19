@@ -10,6 +10,12 @@ import Yealychart from "../Pages/Dashboad/Dashboad_Iteams/Yearly/Yealychart";
 import Chartsummary from "../Pages/Dashboad/Dashboad_Iteams/ChartSummary/Chartsummary";
 import TopicChart from "../Pages/Dashboad/Dashboad_Iteams/TopicChart/TopicChart";
 
+import Filtertopic from "../Pages/Dashboad/Filtertopic/Filtertopic";
+import Countyfilter from "../Pages/Dashboad/FilterComponent/Countyfilter/Countyfilter";
+import Sourcefilter from "../Pages/Dashboad/FilterComponent/Sourcefilter/Sourcefilter";
+import Pestlefilter from "../Pages/Dashboad/Pestlefilter/Pestlefilter";
+import Regionfilter from "../Pages/Dashboad/FilterComponent/Regionfilter/Regionfilter";
+
 export const router = createBrowserRouter([
   {
     path: "/",
@@ -45,6 +51,30 @@ export const router = createBrowserRouter([
       {
         path: "dashboard/topic",
         element: <TopicChart></TopicChart>,
+      },
+      {
+        path: "dashboard/countryfilter",
+        element: <Countyfilter></Countyfilter>,
+      },
+      {
+        path: "dashboard/filtertopic",
+        element: <Filtertopic></Filtertopic>,
+      },
+      // {
+      //   path: "dashboard/regionfilter",
+      //   element: <Filtertopic></Filtertopic>,
+      // },
+      {
+        path: "dashboard/sourcefilter",
+        element: <Sourcefilter></Sourcefilter>,
+      },
+      {
+        path: "dashboard/pestlefilter",
+        element: <Pestlefilter></Pestlefilter>,
+      },
+      {
+        path: "dashboard/regoionfilter",
+        element: <Regionfilter></Regionfilter>,
       },
     ],
   },
