@@ -59,13 +59,13 @@ const Login = () => {
       <Helmet>
         <title>Juicy Food | Login</title>
       </Helmet>
-      <div className="hero min-h-screen bg-base-200">
-        <div className="hero-content flex-col md:flex-row-reverse">
-          <div className="text-center md:w-1/2 lg:text-left">
+      <div className="hero p-3 w-full bg-base-200">
+        <div className="hero-content ">
+          {/* <div className="text-center  lg:text-left">
             <h1 className="text-5xl text-center mb-2 font-bold">Login now!</h1>
-            {/* <img src={login} alt="" /> */}
-          </div>
-          <div className="card md:w-1/2 max-w-sm shadow-2xl bg-base-100">
+           
+          </div> */}
+          <div className="card   shadow-2xl bg-base-100">
             <form onSubmit={handleLogin} className="card-body">
               <div className="form-control">
                 <label className="label">
@@ -120,7 +120,7 @@ const Login = () => {
               <strong>
                 New Here?{" "}
                 <Link to="/signup">
-                  <span className="text-lg text-amber-400 ">
+                  <span className="text-lg text-blue-400 ">
                     Create an account
                   </span>
                 </Link>{" "}

@@ -33,7 +33,7 @@ const SignUp = () => {
             email: data.email,
             photoURL: imageURL, // Include imageURL in userInfo
           };
-          axiosPublic.post("/users", userInfo).then((res) => {
+          axiosPublic.post("/user", userInfo).then((res) => {
             if (res.data.insertedId) {
               console.log("user added to the database");
               reset();
@@ -68,7 +68,7 @@ const SignUp = () => {
   return (
     <>
       <Helmet>
-        <title>Bistro Boss | Sign Up</title>
+        <title>Chart || Sign Up</title>
       </Helmet>
       <div className="hero min-h-screen bg-base-200">
         <div className="hero-content flex-col lg:flex-row-reverse">
@@ -169,7 +169,7 @@ const SignUp = () => {
               <strong>
                 Already Have an account?{" "}
                 <Link to="/login">
-                  <span className="text-lg text-amber-400 ">Login now</span>
+                  <span className="text-lg text-blue-400 ">Login now</span>
                 </Link>{" "}
               </strong>
             </p>

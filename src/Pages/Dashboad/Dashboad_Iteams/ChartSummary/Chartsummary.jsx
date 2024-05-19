@@ -92,7 +92,7 @@ const Chartsummary = () => {
   return (
     <div>
       <div className="m-2">
-        <h2 className="text-center font-semibold text-lg font-serif">
+        <h2 className="text-center  text-4xl font-extrabold sm:text-5xl text-[#36A2EB] mb-20">
           Chart Summary
         </h2>
       </div>
