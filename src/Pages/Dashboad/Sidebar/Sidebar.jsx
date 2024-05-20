@@ -4,6 +4,10 @@ import logo from "../../../assets/logo/ch Logo.png";
 import { IoBarChartSharp } from "react-icons/io5";
 import { FcComboChart } from "react-icons/fc";
 import { FcPieChart } from "react-icons/fc";
+import { FaLocationCrosshairs } from "react-icons/fa6";
+import { SiSourceengine } from "react-icons/si";
+import { FcAreaChart } from "react-icons/fc";
+import { FcFlowChart } from "react-icons/fc";
 const Sidebar = () => {
   return (
     <div className="flex ">
@@ -74,7 +78,7 @@ const Sidebar = () => {
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gradient-to-r from-[#7367F0] to-[#9D94F4] rounded-xl m-2 shadow-lg pr-6"
             >
               <span className="inline-flex justify-center items-center ml-4">
-                <FcPieChart className="w-5 h-5"></FcPieChart>
+                <FaLocationCrosshairs className="w-5 h-5 text-blue-500"></FaLocationCrosshairs>
               </span>
               <span className="ml-2 text-sm tracking-wide truncate">
                 Country Filter
@@ -92,7 +96,7 @@ const Sidebar = () => {
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gradient-to-r from-[#7367F0] to-[#9D94F4] rounded-xl m-2 shadow-lg pr-6"
             >
               <span className="inline-flex justify-center items-center ml-4">
-                <FcPieChart className="w-5 h-5"></FcPieChart>
+                <SiSourceengine className="w-5 h-5 text-blue-400"></SiSourceengine>
               </span>
               <span className="ml-2 text-sm tracking-wide truncate">
                 Sourse Filter
@@ -109,7 +113,7 @@ const Sidebar = () => {
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gradient-to-r from-[#7367F0] to-[#9D94F4] rounded-xl m-2 shadow-lg pr-6"
             >
               <span className="inline-flex justify-center items-center ml-4">
-                <FcPieChart className="w-5 h-5"></FcPieChart>
+                <FcFlowChart className="w-5 h-5"></FcFlowChart>
               </span>
               <span className="ml-2 text-sm tracking-wide truncate">
                 Pestle Filter
@@ -126,7 +130,7 @@ const Sidebar = () => {
               className="relative flex flex-row items-center h-11 focus:outline-none hover:bg-gradient-to-r from-[#7367F0] to-[#9D94F4] rounded-xl m-2 shadow-lg pr-6"
             >
               <span className="inline-flex justify-center items-center ml-4">
-                <FcPieChart className="w-5 h-5"></FcPieChart>
+                <FcAreaChart className="w-5 h-5"></FcAreaChart>
               </span>
               <span className="ml-2 text-sm tracking-wide truncate">
                 Region Filter
