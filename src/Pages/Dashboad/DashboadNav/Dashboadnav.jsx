@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-
+import logo from "../../../assets/logo/ch Logo.png";
 const Dashboadnav = () => {
   const Navbarlinks = (
     <>
@@ -43,11 +43,7 @@ const Dashboadnav = () => {
         </div>
         <div className="navbar-center">
           <a className="text-xl">
-            <img
-              className="w-16 bg-transparent"
-              src="/src/assets/ch Logo.png"
-              alt=""
-            />
+            <img className="w-16 bg-transparent" src={logo} alt="" />
           </a>
         </div>
         <div className="navbar-end">

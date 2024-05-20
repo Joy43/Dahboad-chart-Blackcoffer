@@ -9,7 +9,7 @@ Chart.register(...registerables);
 const Chartsummary = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { data, loading, error } = useAxiosChart(
-    `https://dahboad-chart-blackcoffer.vercel.app/chart?page=${currentPage}&limit=20`
+    `https://dashboad-server.vercel.app/chart?page=${currentPage}&limit=20`
   );
   const [chartData, setChartData] = useState({});
 
@@ -18,7 +18,6 @@ const Chartsummary = () => {
       const topics = data.map((item) => item.topic);
       const intensities = data.map((item) => item.intensity);
 
-      // Define a set of colors
       const colors = [
         "rgba(75, 192, 192, 0.6)",
         "rgba(255, 99, 132, 0.6)",

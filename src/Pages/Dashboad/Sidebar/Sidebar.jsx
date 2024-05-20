@@ -1,6 +1,6 @@
 import { NavLink, Outlet } from "react-router-dom";
 import Dashboadnav from "../DashboadNav/Dashboadnav";
-
+import logo from "../../../assets/logo/ch Logo.png";
 import { IoBarChartSharp } from "react-icons/io5";
 import { FcComboChart } from "react-icons/fc";
 import { FcPieChart } from "react-icons/fc";
@@ -12,11 +12,7 @@ const Sidebar = () => {
           <li className="hidden mx-auto md:block ">
             {/* ----------      Header      ------- */}
             <div className=" animate-pulse mx-auto overflow-x-hidden text-center items-center">
-              <img
-                className=" w-28 bg-transparent"
-                src="/src/assets/ch Logo.png"
-                alt=""
-              />
+              <img className=" w-28 bg-transparent" src={logo} alt="" />
             </div>
           </li>
           <hr className="shadow-lg border-spacing-1" />

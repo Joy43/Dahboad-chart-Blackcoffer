@@ -7,7 +7,7 @@ const Pestlefilter = () => {
   );
   const [selectedPestle, setselectedPestle] = useState([]);
 
-  // Loading state
+  // -----------Loading state------------
   if (loading) {
     return (
       <div className="items-center justify-center">
@@ -16,7 +16,7 @@ const Pestlefilter = () => {
     );
   }
 
-  // Error state
+  // ---------Error state -----------------------------------------
   if (error) {
     return (
       <div role="alert" className="alert alert-error">
