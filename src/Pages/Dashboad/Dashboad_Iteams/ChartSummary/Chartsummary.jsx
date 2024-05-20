@@ -9,7 +9,7 @@ Chart.register(...registerables);
 const Chartsummary = () => {
   const [currentPage, setCurrentPage] = useState(1);
   const { data, loading, error } = useAxiosChart(
-    `http://localhost:5000/chart?page=${currentPage}&limit=20`
+    `https://dahboad-chart-blackcoffer.vercel.app/chart?page=${currentPage}&limit=20`
   );
   const [chartData, setChartData] = useState({});
 
