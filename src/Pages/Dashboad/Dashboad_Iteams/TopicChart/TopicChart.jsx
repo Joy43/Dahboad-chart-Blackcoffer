@@ -3,7 +3,9 @@ import { Pie } from "react-chartjs-2";
 import { useState } from "react";
 import useAxiosChart from "../../../../Hook/useAxiosChart";
 const TopicChart = () => {
-  const { data, loading, error } = useAxiosChart("http://localhost:5000/chart");
+  const { data, loading, error } = useAxiosChart(
+    "https://dashboad-server.vercel.app/chart"
+  );
   const [selectedTopics, setSelectedTopics] = useState([]);
   // ---------loading chart----------
   if (loading)
@@ -92,7 +94,10 @@ const TopicChart = () => {
             </label>
           ))}
         </div>
-        <div className=" h-[400px]">
+        <div
+          className="chart-container"
+          style={{ width: "50%", height: "55%" }}
+        >
           {" "}
           <Pie data={chartData} />
         </div>

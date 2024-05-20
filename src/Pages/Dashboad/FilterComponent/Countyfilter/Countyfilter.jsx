@@ -3,7 +3,9 @@ import { PolarArea } from "react-chartjs-2";
 import useAxiosChart from "../../../../Hook/useAxiosChart";
 
 const Countyfilter = () => {
-  const { data, loading, error } = useAxiosChart("http://localhost:5000/chart");
+  const { data, loading, error } = useAxiosChart(
+    "https://dashboad-server.vercel.app/chart"
+  );
   const [selectedCountry, setSelectedCountry] = useState([]);
 
   // Loading state
@@ -96,7 +98,7 @@ const Countyfilter = () => {
           </label>
         ))}
       </div>
-      <div className="chart-container max-h-[600px]">
+      <div className="chart-container" style={{ width: "50%", height: "50%" }}>
         <PolarArea data={chartData} />
       </div>
     </div>

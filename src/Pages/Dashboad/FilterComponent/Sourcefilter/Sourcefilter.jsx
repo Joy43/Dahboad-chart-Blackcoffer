@@ -3,7 +3,9 @@ import { PolarArea } from "react-chartjs-2";
 import useAxiosChart from "../../../../Hook/useAxiosChart";
 
 const Sourcefilter = () => {
-  const { data, loading, error } = useAxiosChart("http://localhost:5000/chart");
+  const { data, loading, error } = useAxiosChart(
+    "https://dashboad-server.vercel.app/chart"
+  );
   const [selectedCountry, setSelectedCountry] = useState([]);
 
   // Loading state
@@ -83,21 +85,29 @@ const Sourcefilter = () => {
 
   // Render component
   return (
-    <div className="flex gap-4 m-4">
-      <div className="country-filters">
-        {countries.map((source) => (
-          <label className="flex gap-2" key={source}>
-            <input
-              type="checkbox"
-              value={source}
-              onChange={handleCountryChange}
-            />
-            {source}
-          </label>
-        ))}
-      </div>
-      <div className="chart-container max-h-[600px]">
-        <PolarArea data={chartData} />
+    <div className="">
+      <h1 className="text-center  mt-4 p-2 text-4xl shadow-lg font-extrabold sm:text-5xl text-[#36A2EB] mb-20">
+        Source Wise Filter Chart
+      </h1>
+      <div className="flex gap-4 m-4">
+        <div className="country-filters">
+          {countries.map((source) => (
+            <label className="flex gap-2" key={source}>
+              <input
+                type="checkbox"
+                value={source}
+                onChange={handleCountryChange}
+              />
+              {source}
+            </label>
+          ))}
+        </div>
+        <div
+          className="chart-container"
+          style={{ width: "50%", height: "50%" }}
+        >
+          <PolarArea data={chartData} />
+        </div>
       </div>
     </div>
   );

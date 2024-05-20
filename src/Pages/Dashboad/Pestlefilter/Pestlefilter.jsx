@@ -2,7 +2,9 @@ import { useState } from "react";
 import useAxiosChart from "../../../Hook/useAxiosChart";
 import { Radar } from "react-chartjs-2";
 const Pestlefilter = () => {
-  const { data, loading, error } = useAxiosChart("http://localhost:5000/chart");
+  const { data, loading, error } = useAxiosChart(
+    "https://dashboad-server.vercel.app/chart"
+  );
   const [selectedPestle, setselectedPestle] = useState([]);
 
   // Loading state
@@ -82,21 +84,29 @@ const Pestlefilter = () => {
 
   // Render component
   return (
-    <div className="flex gap-4 m-4">
-      <div className="country-filters">
-        {countries.map((pestle) => (
-          <label className="flex gap-2" key={pestle}>
-            <input
-              type="checkbox"
-              value={pestle}
-              onChange={handleCountryChange}
-            />
-            {pestle}
-          </label>
-        ))}
-      </div>
-      <div className="chart-container max-h-[600px]">
-        <Radar data={chartData} />
+    <div>
+      <h1 className="text-center  mt-4 p-2 text-4xl shadow-lg font-extrabold sm:text-5xl text-[#36A2EB] mb-20">
+        Pestle Wise Filter Chart
+      </h1>
+      <div className="flex gap-4 m-4">
+        <div className="country-filters">
+          {countries.map((pestle) => (
+            <label className="flex gap-2" key={pestle}>
+              <input
+                type="checkbox"
+                value={pestle}
+                onChange={handleCountryChange}
+              />
+              {pestle}
+            </label>
+          ))}
+        </div>
+        <div
+          className="chart-container"
+          style={{ width: "55%", height: "55%" }}
+        >
+          <Radar data={chartData} />
+        </div>
       </div>
     </div>
   );

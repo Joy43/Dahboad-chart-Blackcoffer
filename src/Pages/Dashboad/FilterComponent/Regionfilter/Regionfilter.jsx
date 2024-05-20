@@ -1,9 +1,11 @@
 import { useState } from "react";
+import { Bar } from "react-chartjs-2";
 import useAxiosChart from "../../../../Hook/useAxiosChart";
-import { Line } from "react-chartjs-2";
 
 const Regionfilter = () => {
-  const { data, loading, error } = useAxiosChart("http://localhost:5000/chart");
+  const { data, loading, error } = useAxiosChart(
+    "https://dashboad-server.vercel.app/chart"
+  );
   const [selectedRegion, setselectedRegion] = useState([]);
 
   //---------- Loading state-----------
@@ -38,7 +40,7 @@ const Regionfilter = () => {
   }
 
   // Get unique countries
-  const countries = [...new Set(data.map((item) => item.regione))];
+  const countries = [...new Set(data.map((item) => item.region))];
 
   // Filter data based on selected countries
   const filteredCountryData =
@@ -67,8 +69,23 @@ const Regionfilter = () => {
           "#9966FF",
           "#FF9F40",
         ],
+        borderWidth: 1,
       },
     ],
+  };
+
+  // Chart options with animations
+  const options = {
+    responsive: true,
+    animation: {
+      duration: 1000,
+      easing: "easeInOutQuad",
+    },
+    scales: {
+      y: {
+        beginAtZero: true,
+      },
+    },
   };
 
   // Handle country selection
@@ -83,21 +100,29 @@ const Regionfilter = () => {
 
   // Render component
   return (
-    <div className="flex gap-4 m-4">
-      <div className="country-filters">
-        {countries.map((region) => (
-          <label className="flex gap-2" key={region}>
-            <input
-              type="checkbox"
-              value={region}
-              onChange={handleCountryChange}
-            />
-            {region}
-          </label>
-        ))}
-      </div>
-      <div className="chart-container ">
-        <Line data={chartData} />
+    <div>
+      <h1 className="text-center  mt-4 p-2 text-4xl shadow-lg font-extrabold sm:text-5xl text-[#36A2EB] mb-20">
+        Region Wise Filter Chart
+      </h1>
+      <div className="flex gap-4 m-4">
+        <div className="country-filters">
+          {countries.map((region) => (
+            <label className="flex gap-2" key={region}>
+              <input
+                type="checkbox"
+                value={region}
+                onChange={handleCountryChange}
+              />
+              {region}
+            </label>
+          ))}
+        </div>
+        <div
+          className="chart-container"
+          style={{ width: "80%", height: "80%" }}
+        >
+          <Bar data={chartData} options={options} />
+        </div>
       </div>
     </div>
   );

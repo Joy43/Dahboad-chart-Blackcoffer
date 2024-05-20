@@ -88,7 +88,7 @@ const Sidebar = () => {
               </span>
             </NavLink>
           </li>
-          {/* -------------region --------- */}
+
           {/* -------------source --------- */}
           <li>
             <NavLink

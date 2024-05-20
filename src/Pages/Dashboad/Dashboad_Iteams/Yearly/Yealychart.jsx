@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import axios from "axios";
-import { Bar } from "react-chartjs-2";
+import { Line } from "react-chartjs-2";
 
 function Yealychart() {
   const [chartData, setChartData] = useState([]);
@@ -11,7 +11,9 @@ function Yealychart() {
 
   const fetchData = async () => {
     try {
-      const response = await axios.get("http://localhost:5000/variabledata");
+      const response = await axios.get(
+        "https://dashboad-server.vercel.app/variabledata"
+      );
       setChartData(response.data);
     } catch (error) {
       console.error("Error fetching data:", error);
@@ -51,12 +53,12 @@ function Yealychart() {
 
   return (
     <div className="Yealychart">
-      <h1 className="text-center  text-4xl font-extrabold sm:text-5xl text-[#36A2EB] mb-20 ">
+      <h1 className="text-center mt-3  text-4xl font-extrabold sm:text-5xl text-[#36A2EB] mb-20 ">
         {" "}
         Visualized Yealy
       </h1>
       <div style={{ height: "500px", width: "1000px" }}>
-        <Bar
+        <Line
           data={prepareChartData()}
           options={{
             maintainAspectRatio: false,
